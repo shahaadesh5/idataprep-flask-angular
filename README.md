@@ -14,7 +14,7 @@ Run the 'npm install' command inside frontend folder. It should install all the 
 
 The application should run on http://localhost:4200/
 
-To run the backend server for processing data, redirect to backend folder and run 'python3 app.py' command.
+To run the backend server for processing data, redirect to backend folder and run 'flask run' command. Make sure you have python, pip and flask installed on your machine. The backend server should be running on port 5000.
 
 There's a test dataset available, user can upload their own dataset only if it has categorical data.
 
