@@ -1,0 +1,25 @@
+<style>
+    rect.bar{
+    fill: #df031d;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+rect.bar:hover{
+    fill: #000;
+}
+</style>
+
+<div class="container algorithms-suggestion mt-4">
+    <div class="text-center">
+        <h4 class="px-5 py-3 mb-5 d-inline-block rounded-pill section-heading">Classification Algorithms Analysis</h4>
+        <mat-progress-bar [ngClass]="{'d-none' : ready}" class="mb-5" mode="query"></mat-progress-bar>
+
+    </div>
+
+<div *ngIf="ready" class="mb-5 text-center">
+    <h3>Recommended algorithm for this dataset: <span style="color: #df031d"> {{ algo["algo"] }} </span> with efficiency of <span style="color: #df031d"> {{ algo["efficiency"]*100 }}% </span></h3>
+  </div>
+    <div id="accuracy-graph" #accuracygraph>
+
+    </div>
+</div>

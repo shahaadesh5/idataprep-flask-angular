@@ -1,0 +1,64 @@
+<div class="container feature-preferences mt-4">
+  <div class="text-center">
+      <h4 class="px-5 py-3 mb-5 d-inline-block rounded-pill section-heading">Adjust Feature Cleaning Preferences</h4>
+      <mat-progress-bar [ngClass]="{'d-none' : ready}" class="mb-5" mode="query"></mat-progress-bar>
+  </div>
+  <div class="form-group text-left">
+    <div class="container-fluid">
+      <div *ngFor="let feature of featuresReceived; index as i" class="row">
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <input
+              matInput
+              placeholder="Feature Name"
+              value="{{ feature.name }}"
+              (input)="onFeatureNameInput(i, $event)"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-select [(value)]="feature.type" placeholder="Feature Type">
+              <mat-option value="{{ FeatureType.t1 }}">{{
+                FeatureType.t1 | titlecase
+              }}</mat-option>
+              <mat-option [value]="FeatureType.t2">{{
+                FeatureType.t2 | titlecase
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div *ngIf="feature.type == FeatureType.t2" class="col">
+          <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Categories"
+                (input)="onInputCategory(i, $event)"
+              />
+          </mat-form-field>
+        </div>
+        <div *ngIf="feature.type == FeatureType.t1" class="col d-flex align-items-center justify-content-start">
+          <mat-checkbox (change)="onZeroAllowedChange(i, $event)" [checked]="feature.preferences.zeroAllowed" class="mr-5">Zero Allowed</mat-checkbox>
+          <mat-checkbox (change)="onNegAllowedChange(i, $event)" [checked]="feature.preferences.negativeAllowed">Negative Allowed</mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="targetFeatureindex > -1 && forClassification">
+      <mat-divider class="pt-3"></mat-divider>
+      <div  class="row justify-content-center alert-warning p-2 rounded-pill">
+          <div class="col-4">
+            <mat-form-field class="w-100">
+              <mat-select [(value)]="targetFeatureindex" placeholder="Target Feature">
+                <mat-option *ngFor="let feature of featuresReceived; index as i" [value]="i">{{ feature.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+    </div>
+
+  </div>
+  <mat-divider></mat-divider>
+  <div class="text-center">
+      <button mat-stroked-button color="primary" class="mt-5 p-1 text-decoration-none" (click)="saveAndStartProcessing()"><i class="fas fa-tools"></i> Save and Start Preprocessing</button>
+  </div>
+</div>

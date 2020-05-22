@@ -1,0 +1,22 @@
+<div class="container csv-file-upload mt-4">
+  <div class="form-group text-center">
+    <a mat-raised-button color="primary" class="px-5 py-3 btn-lg large rounded-pill text-decoration-none" (click)="csv_dataset.click()" href="javascript:void(0)">Select your CSV Dataset</a>
+    <form id="fileUploadForm" (ngSubmit)="onSubmit($event)" #fileUploadForm=ngForm >
+    <input type="file" class="d-none form-control-file" accept=".csv" name="csv_dataset" id="csv_dataset" (input)="onFileInput($event)" #csv_dataset>
+    <small *ngIf="filename!=''" id="fileHelpId" class="form-text text-muted">{{ filename }}</small>
+    <div *ngIf="filename!=''" class="d-flex justify-content-center align-content-center">
+      <div class="form-check d-flex flex-column mt-3">
+          <label class="form-check-label text-left">
+            <input type="checkbox" class="form-check-input" name="has_header" id="has_header" (input)="hasHeader = has_Header.checked" [checked]="hasHeader" #has_Header>
+            Dataset has headers
+          </label>
+          <label class="form-check-label text-left">
+            <input type="checkbox" class="form-check-input" name="for_classification" id="for_classification" (input)="forClassificationChanged.emit(for_classification.checked)" [checked]="forClassification" #for_classification>
+            Preparing dataset for classification
+          </label>
+          <button type="submit" [disabled]="!fileUploadForm.form.valid" mat-stroked-button color="primary" class="mt-5 p-1 text-decoration-none"><i class="fas fa-upload"></i> Upload</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>

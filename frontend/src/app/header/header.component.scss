@@ -1,0 +1,12 @@
+:host {
+  flex-shrink: 0;
+}
+
+.title {
+  color: #777;
+  text-shadow:
+    -1px -1px 0 rgb(255, 200, 0),
+     1px -1px 0 rgb(255, 200, 0),
+    -1px  1px 0 rgb(255, 200, 0),
+     1px  1px 0 rgb(255, 200, 0);
+}

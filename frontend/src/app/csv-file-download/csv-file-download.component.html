@@ -1,0 +1,12 @@
+<div class="container csv-file-download mt-4">
+  <div class="form-group text-center">
+    <ng-container *ngIf="ready; else disabledButton">
+      <a mat-stroked-button class="px-5 py-3 btn-lg large rounded-pill text-decoration-none" (click)="downloadFile()" download="{{ downloadFilename }}" [href]="downloadURL">
+        <i class="fas fa-download"></i> Download Cleaned Dataset</a>
+    </ng-container>
+    <ng-template #disabledButton>
+        <a mat-stroked-button class="px-5 py-3 btn-lg large rounded-pill text-decoration-none" (click)="downloadFile()" href="javascript:void(0)"><i class="fas fa-download"></i> Please Wait...</a>
+    </ng-template>
+    <mat-progress-bar [ngClass]="{'d-none' : ready}" class="mb-5" mode="query"></mat-progress-bar>
+  </div>
+</div>

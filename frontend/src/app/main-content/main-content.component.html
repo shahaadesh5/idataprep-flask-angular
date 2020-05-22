@@ -1,0 +1,44 @@
+<div class="container-fluid main-content pb-5">
+  <mat-horizontal-stepper [linear]=true labelPosition="bottom" #stepper>
+    <mat-step *ngFor="let step of firstSteps; index as i;" completed=false optional=false>
+      <ng-template matStepLabel>{{ firstSteps[i].title }}</ng-template>
+      <div class="p-3">
+
+        <app-csv-file-upload [forClassification]="forClassification" (completed)="markStepCompleted(i)" (forClassificationChanged)="forClassificationChange($event)" *ngIf="i == 0"></app-csv-file-upload>
+        <app-feature-preferences [forClassification]="forClassification" (completed)="markStepCompleted(i)" *ngIf="i == 1"></app-feature-preferences>
+
+        <div>
+            <div class="d-flex">
+                <button *ngIf="i != 0;" mat-button matStepperPrevious color="primary"><i class="fas fa-arrow-circle-left"></i> Back</button>
+                <button [class.d-none]="stepper.selected && !stepper.selected.completed" mat-raised-button color="primary" class="ml-auto" (click)="stepper.next();">Next <i class="fas fa-arrow-circle-right"></i></button>
+            </div>
+          </div>
+      </div>
+    </mat-step>
+
+
+    <mat-step *ngFor="let step of otherSteps; index as i;" completed=false optional=false>
+        <ng-template matStepLabel>{{ otherSteps[i].title }}</ng-template>
+        <div class="p-3">
+
+          <app-dataset-cleaning (completed)="markStepCompleted(i+2)" *ngIf="i == 0"></app-dataset-cleaning>
+          <app-algorithms-suggestion (completed)="markStepCompleted(i+2)" *ngIf="forClassification && i == 1"></app-algorithms-suggestion>
+          <app-csv-file-download (completed)="markStepCompleted(i+2)" *ngIf="i == otherSteps.length-1"></app-csv-file-download>
+
+          <div *ngIf="i == otherSteps.length-1; else other_buttonset">
+              <div class="d-flex">
+                  <button mat-button color="primary" matStepperPrevious><i class="fas fa-arrow-circle-left"></i> Back</button>
+                  <button [class.d-none]="stepper.selected && !stepper.selected.completed" mat-raised-button color="warn" class="ml-auto" (click)="resetAll()">Reset <i class="fas fa-trash-alt"></i></button>
+              </div>
+          </div>
+          <ng-template #other_buttonset>
+              <div class="d-flex">
+                  <button mat-button matStepperPrevious color="primary"><i class="fas fa-arrow-circle-left"></i> Back</button>
+                  <button [class.d-none]="stepper.selected && !stepper.selected.completed" mat-raised-button color="primary" class="ml-auto" (click)="stepper.next();">Next <i class="fas fa-arrow-circle-right"></i></button>
+              </div>
+          </ng-template>
+        </div>
+      </mat-step>
+</mat-horizontal-stepper>
+
+</div>

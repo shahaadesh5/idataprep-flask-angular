@@ -1,0 +1,22 @@
+.status-text {
+  color: white;
+}
+
+.status-bar{
+  position: fixed;
+  bottom: 0px;
+  width: 70vw;
+  border-radius: 0 50px 50px 0;
+  z-index: 5000;
+  background: black;
+  opacity: 0.9;
+  padding-left: 10px;
+  line-height: 50px;
+  height: 50px;
+}
+
+.status-icon{
+  &.ready i{
+    color: green;
+  }
+}

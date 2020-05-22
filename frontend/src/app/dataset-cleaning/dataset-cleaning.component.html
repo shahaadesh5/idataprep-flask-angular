@@ -1,0 +1,17 @@
+<div class="container-fluid dataset-cleaning mt-4">
+    <div class="text-center">
+        <h4 class="px-5 py-3 mb-5 d-inline-block rounded-pill section-heading">Cleaning Dataset</h4>
+        <mat-progress-bar [ngClass]="{'d-none' : done}" class="mb-5" mode="query"></mat-progress-bar>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <ul class="list-group px-5">
+          <li *ngFor="let step of cleaningSteps; index as i;" class="small list-group-item alert-info pl-3 py-1 mb-2 rounded-pill">{{ step | titlecase }}</li>
+        </ul>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div id="cleaningViz" class="col">
+        <app-cleaning-visualization></app-cleaning-visualization>
+      </div>
+    </div>
+</div>

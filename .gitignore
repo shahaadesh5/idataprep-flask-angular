@@ -1,0 +1,8 @@
+# Mac garbage
+.DS_Store
+
+# .csv files
+*.csv
+
+# .pkl files
+*.pkl

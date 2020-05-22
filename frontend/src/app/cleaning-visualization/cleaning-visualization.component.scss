@@ -1,0 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+:host {
+  #infoTooltip {
+    position: absolute;
+    left: 300px;
+    top: 50px;
+    z-index: 100;
+    visibility: hidden;
+    padding: 10px;
+    padding-left: 20px;
+    min-width: 300px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.829);
+    color: white;
+    .small {
+      font-size: 0.8em;
+    }
+  }
+
+  & ::ng-deep .category-label {
+    font-family: 'Roboto Mono', monospace;
+  }
+}

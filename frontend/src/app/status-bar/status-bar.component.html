@@ -1,0 +1,15 @@
+<div class="status-bar container">
+  <div class="row">
+    <div class="col-auto">
+        <span class="status-text small"><span class="status-icon mr-1" [ngStyle]="{color: dataservice.applicationStatusColor}"><i class="fas fa-circle"></i></span>Status: {{ dataservice.applicationStatus }}</span>
+    </div>
+    <div class="col d-flex align-items-center">
+        <div [ngClass]="{'d-none' : dataservice.applicationStatusCode == dataservice.statusCode.ready}" class="spinner-border ml-auto" [ngStyle]="{color: dataservice.applicationStatusColor}" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div [ngClass]="{'d-none' : dataservice.applicationStatusCode != dataservice.statusCode.ready}" class="spinner-grow ml-auto" [ngStyle]="{color: dataservice.applicationStatusColor}" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+  </div>
+</div>

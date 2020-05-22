@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  height: 100%;
+}
+main {
+  overflow: auto;
+  // Account for sticky status-bar height
+  margin-bottom: -50px;
+  padding-bottom: 50px;
+}
