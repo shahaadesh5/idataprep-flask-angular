@@ -23,7 +23,7 @@
     "@angular/router": "~8.1.0",
     "@types/socket.io-client": "^1.4.32",
     "core-js": "^2.5.4",
-    "d3": "^5.9.7",
+    "d3": "^7.6.1",
     "d3-tip": "^0.9.1",
     "rxjs": "~6.5.2",
     "socket.io-client": "^2.2.0",
